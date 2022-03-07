@@ -1,12 +1,11 @@
-import memo from 'memo-decorator';
-import { pipeline } from 'stream';
+import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'Paginate'
 })
 
 export class PaginatePipe implements PipeTransform{
-  @memo((...args: any[]): string => JSON.stringify(args))
+  
   transform(array: any[],page_size: number | string, page_number: number): any[]{
     if(!array.length) return []
     if(page_size === 'all'){
